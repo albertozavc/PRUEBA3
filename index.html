@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Genera Firma</title>
+<style type="text/css" media="screen">
+.tabla { border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px }
+.sinborde {
+  border: 0;
+  color: mediumblue;
+}
+.sinborde2 {
+  border: 0;
+  font-size: 5;
+  color: mediumblue;
+  font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+  text-align: center;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+function ShowSelected() { 
+    document.getElementById("nombrer").value = document.getElementById("primernombre").value;
+    document.getElementById("emailr").value = document.getElementById("email").value;
+    document.getElementById("proyector").value = document.getElementById("proyecto").value;    
+    var combo = document.getElementById("puesto");
+    var selected = combo.options[combo.selectedIndex].text;    
+    document.getElementById("puestor").value = selected;
+    document.getElementById("telr").value = document.getElementById("tel").value;
+}
+
+function cambiarImagen() {
+    var empresa = document.getElementById("empresa").value;
+    var table = document.getElementById("firmaTable");
+
+  
+    switch(empresa) {
+        case "AccessOne":
+            table.style.background = "url('firmaNov.jpg') no-repeat";
+            break;
+        case "ParkingPlus":
+            table.style.background = "url('parkingplus.jpg') no-repeat";
+            break;
+        case "Accesos Europeos":
+            table.style.background = "url('accesoseuropeos.jpg') no-repeat";
+            break;
+        case "Armony":
+            table.style.background = "url('armony.jpg') no-repeat";
+            break;
+        case "B2Park":
+            table.style.background = "url('b2park.jpg') no-repeat";
+            break;
+        default:
+            table.style.background = "url('firmaNov.jpg') no-repeat"; 
+    }
+
+    
+    var color;
+    switch(empresa) {
+
+        case "Accesos Europeos":
+            color = "#356c88"; 
+            break;
+        case "B2park":
+            color = "#d89502"; 
+            break;
+        case "ParkingPlus":
+            color = "#2f405d"; 
+            break;
+        case "Armony":
+            color = "#f8cc1f";
+            break;
+        case "AccessOne":
+            color = "#fff100"; 
+            break;
+        default:
+            color = "#D3B726"; 
+    }
+
+    
+    var cells = document.querySelectorAll("#firmaTable td[rowspan='4']");
+    cells.forEach(function(cell) {
+        cell.style.backgroundColor = color;
+    });
+}
+</script>
+</head>
+
+<body>
+<p align="left"><a href="../home.php">Regresar a página principal</a></p>
+<table width="723" border="0" class="tabla">
+  <tbody>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center"><font color="#0D1AB0">Llene los siguientes campos por favor</font></td>
+    </tr>
+    <tr>
+      <td width="256">1.- Primer Nombre y Primer Apellido</td>
+      <td width="355"><input name="primernombre" type="text" autofocus="autofocus" id="primernombre" title="Primer Nombre" size="27" maxlength="22" onChange="ShowSelected();"></td>
+    </tr>
+    <tr>
+      <td>2.- Email</td>
+      <td><input name="email" type="text" id="email" size="37" maxlength="34"></td>
+    </tr>
+    <tr>
+      <td>3.- Proyecto</td>
+      <td><input name="proyecto" type="text" id="proyecto" size="27" maxlength="25"></td>
+    </tr>
+    <tr>
+      <td>4.- Puesto</td>
+      <td align="left" valign="left">
+        <select name="puesto" id="puesto">
+          <option value="GERENTE DE PROYECTO">GERENTE DE PROYECTO</option>
+          <option value="GERENTE DE OPERACIONES">GERENTE DE OPERACIONES</option>
+          <option value="GERENTE DE ZONA">GERENTE DE ZONA</option>
+          <option value="COORDINADOR DE ZONA">COORDINADOR DE ZONA</option>
+          <option value="TÉCNICO">TÉCNICO</option>
+          <option value="SUPERVISOR">SUPERVISOR</option>
+          <option value="TESORERÍA">TESORERÍA</option>
+          <option value="CONTABILIDAD">CONTABILIDAD</option>
+          <option value="RECURSOS HUMANOS">RECURSOS HUMANOS</option>
+          <option value="MONITOREO">MONITOREO</option>
+          <option value="RECEPCIÓN">RECEPCIÓN</option>
+          <option value="ALMACÉN">ALMACÉN</option>
+          <option value="COMERCIAL">COMERCIAL</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>5.- Teléfono</td>
+      <td align="left" valign="middle"><input name="tel" type="tel" id="tel" size="15" maxlength="11"></td>
+    </tr>
+    <tr>
+      <td>6.- Empresa</td>
+      <td align="left" valign="left">
+        <select name="empresa" id="empresa" onchange="cambiarImagen()">
+          <option value="AccessOne">ACCESONE</option>
+          <option value="ParkingPlus">PARKINGPLUS</option>
+          <option value="Accesos Europeos">ACCESOS EUROPEOS</option>
+          <option value="Armony">ARMONY</option>
+          <option value="B2Park">B2PARK</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center" valign="middle">
+        <button onclick="ShowSelected()">Generar Firma</button>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center"><font color="#0D1AB0">Tome una captura de su firma generada</font></td>
+    </tr>
+    <tr>
+      <td align="center" valign="middle">
+        <a href="https://support.office.com/es-es/article/crear-y-agregar-una-firma-a-los-mensajes-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2" target="new">ayuda sobre ¿cómo poner una imágen de firma en Microsoft Outlook?</a>
+      </td>
+      <td align="center">
+        <a href="https://support.microsoft.com/es-mx/help/13776/windows-10-use-snipping-tool-to-capture-screenshots" target="new">ayuda sobre ¿cómo tomar un recorte de pantalla?</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<table id="firmaTable" width="1116" border="0" style="background: url('firmaNov.jpg') no-repeat;">
+  <tbody>
+    <tr>
+      <td width="196">&nbsp;</td>
+      <td width="6" rowspan="4" align="center" bgcolor="#D3B726">&nbsp;</td>
+      <td width="288" align="center">&nbsp;</td>
+      <td width="6" rowspan="4" align="center" bgcolor="#D3B726">&nbsp;</td>
+    
+      <td width="584" align="center">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center"><input name="nombrer" type="text" id="nombrer" size="23" maxlength="22" class="sinborde" style="text-align: center"></td>
+      <td align="left" bgcolor="#FFFFFF"><input name="puestor" type="text" id="puestor" size="27" maxlength="22" class="sinborde2" style="text-align: left"></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center"><input name="emailr" type="text" id="emailr" size="37" maxlength="35" class="sinborde2" style="text-align: center"></td>
+      <td align="left" bgcolor="#FFFFFF"><input name="proyector" type="text" id="proyector" size="27" maxlength="25" class="sinborde2" style="text-align: left"></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center"><input name="telr" type="text" class="sinborde2" id="telr" size="15" maxlength="11" style="text-align: center"></td>
+      <td align="left" bgcolor="#FFFFFF">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
